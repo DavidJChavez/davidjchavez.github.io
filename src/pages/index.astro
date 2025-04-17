@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main>
+		<header>
+			<h1>
+				Hola, soy David
+				<svg width="30px" height="30px" viewBox="0 0 24 24" stroke-width="1.6" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M3.2 14.2222V4C3.2 2.89543 4.09543 2 5.2 2H18.8C19.9046 2 20.8 2.89543 20.8 4V14.2222M3.2 14.2222H20.8M3.2 14.2222L1.71969 19.4556C1.35863 20.7321 2.31762 22 3.64418 22H20.3558C21.6824 22 22.6414 20.7321 22.2803 19.4556L20.8 14.2222" stroke="currentColor" stroke-width="1.6"></path>
+					<path d="M11 19L13 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+					<path d="M14 6L16 8L14 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+					<path d="M10 6L8 8L10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</h1>
+			<p>
+				Desarrollador de software y entusiasta de la tecnología.
+				Me gusta aprender y compartir mis conocimientos con los demás.
+				En este sitio web encontrarás mis proyectos, artículos y recursos útiles.
+			</p>
+		</header>
+		<section>
+			<h2>
+				<svg width="30px" height="30px" stroke-width="1.6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7H16M8 7V3.6C8 3.26863 8.26863 3 8.6 3H15.4C15.7314 3 16 3.26863 16 3.6V7M8 7H16" stroke="currentColor" stroke-width="1.6"></path>
+				</svg>
+				Experiencia laboral
+			</h2>
+			<ul>
+				<li>
+					<h3>Desarrollador Frontend</h3>
+					<p>Empresa XYZ - 2022 - Presente</p>
+					<p>Desarrollo de aplicaciones web utilizando React y TypeScript.</p>
+				</li>
+				<li>
+					<h3>Desarrollador Backend</h3>
+					<p>Empresa ABC - 2020 - 2022</p>
+					<p>Desarrollo de APIs RESTful utilizando Node.js y Express.</p>
+				</li>
+				<li>
+					<h3>Practicante de Desarrollo de Software</h3>
+					<p>Empresa DEF - 2019 - 2020</p>
+					<p>Colaboración en el desarrollo de aplicaciones web y móviles.</p>
+				</li>
+			</ul>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		padding: 1.5rem;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	h1, h2 {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+	}
+</style>
