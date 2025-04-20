@@ -1,0 +1,67 @@
+---
+
+---
+
+<nav>
+    <ul>
+        <li><a href="#experienciaLaboral">Experiencia laboral</a></li>
+        <li><a href="#demos">Demos</a></li>
+        <li><a href="#sideProjects">Proyectos independientes</a></li>
+        <li>
+            <select id="themeList">
+                <option selected value="light dark">Sistema</option>
+                <option value="light">Claro</option>
+                <option value="dark">Oscuro</option>
+            </select>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+
+    li a {
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    li a:hover {
+        text-decoration: underline;
+    }
+
+    li a:active {
+        text-decoration: underline;
+    }
+
+    li a:focus {
+        text-decoration: underline;
+    }
+
+    li a:focus-visible {
+        text-decoration: underline;
+    }
+
+    li a:focus-within {
+        text-decoration: underline;
+    }
+</style>
+
+<script is:inline>
+    const handleToggleClick = (event) => {
+        console.log(getComputedStyle(document.documentElement).getPropertyValue('--color-scheme'));
+        document.documentElement.style.setProperty('--color-scheme', event.target.value);
+        console.log(getComputedStyle(document.documentElement).getPropertyValue('--color-scheme'));
+
+    }
+
+    document.getElementById("themeList")?.addEventListener("change", handleToggleClick);
+</script>
