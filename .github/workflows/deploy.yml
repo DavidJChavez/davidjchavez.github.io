@@ -18,7 +18,8 @@ jobs:
         run: bun i
 
       - name: Build
-        env: BASE_PATH: '/${{ github.event.repository.name }}'
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: bun run build
 
       - name: Upload Artifacts
@@ -41,4 +42,5 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
+
         uses: actions/deploy-pages@v4
