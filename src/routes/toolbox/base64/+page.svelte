@@ -72,26 +72,28 @@
 	});
 </script>
 
-<div class="flex h-full gap-4 p-4">
-	<div class="flex flex-1 flex-col">
-		<label for="entrada">Input:</label>
-		<textarea id="entrada" bind:value={rawInput} class="flex-1 resize-none border"></textarea>
-	</div>
-	<div class="flex w-40 flex-col items-center justify-center gap-2">
-		<label for="filetype">File type</label>
-		<select id="filetype" bind:value={tipoConversion} class="w-full border">
-			<option value={null} disabled hidden selected></option>
+<div class="mb-4 border-b border-b-gray-400 text-4xl italic">Base64 encoder/decoder</div>
+
+<div class="mb-2 text-3xl">Decoder</div>
+
+<div class="flex flex-col gap-4">
+	<div class="flex w-sm flex-col gap-0.5">
+		<label for="filetype"> File type </label>
+		<select id="filetype" bind:value={tipoConversion} class="border">
+			<option value={null} disabled hidden selected>Please select...</option>
 			{#each catConvertionTypes as option}
 				<option value={option.value}>{option.name}</option>
 			{/each}
 		</select>
 	</div>
-	<div class="flex flex-1 flex-col items-center justify-center">
-		{#if tipoConversion === null}
-			<div class="text-xl">Selecciona el tipo de conversión</div>
-		{:else if !debouncedValue}
-			<div class="text-xl">Aquí verás el resultado</div>
-		{:else}
+
+	<div class="grid h-100 grid-cols-2 place-items-stretch gap-4">
+		<div class="flex flex-col gap-0.5">
+			<label for="entrada">Input:</label>
+			<textarea id="entrada" bind:value={rawInput} class="flex-1 resize-none border"></textarea>
+		</div>
+
+		<div class="flex flex-col gap-0.5">
 			<div>
 				Output:
 				{#if filetypeRecognized !== null}
@@ -100,23 +102,31 @@
 					</span>
 				{/if}
 			</div>
-			<div class="flex w-full flex-1 items-center justify-center">
-				{#if tipoConversion === ConvertionType.PLAIN_TEXT || filetypeRecognized === ConvertionType.PLAIN_TEXT}
-					<div class="border border-gray-200 p-2 wrap-anywhere w-full h-full">
-						{base64ToUnicode(debouncedValue)}
+			<div class="flex flex-1 border border-gray-200">
+				{#if tipoConversion === null}
+					<div>Selecciona el tipo de conversión</div>
+				{:else if !debouncedValue}
+					<div>Aquí verás el resultado</div>
+				{:else}
+					<div class="flex w-full flex-1 items-center justify-center">
+						{#if tipoConversion === ConvertionType.PLAIN_TEXT || filetypeRecognized === ConvertionType.PLAIN_TEXT}
+							<div class="h-full w-full border border-gray-200 p-2 wrap-anywhere">
+								{base64ToUnicode(debouncedValue)}
+							</div>
+						{:else if tipoConversion === ConvertionType.PDF || filetypeRecognized === ConvertionType.PDF}
+							<embed
+								src={`data:application/pdf;base64,${debouncedValue}`}
+								type="application/pdf"
+								class="h-full w-full flex-1"
+							/>
+						{:else if tipoConversion === ConvertionType.JPG || filetypeRecognized === ConvertionType.JPG}
+							<img src={`data:image/jpeg;base64,${debouncedValue}`} alt="Base64_Image" />
+						{:else if tipoConversion === ConvertionType.PNG || filetypeRecognized === ConvertionType.PNG}
+							<img src={`data:image/png;base64,${debouncedValue}`} alt="Base64_Image" />
+						{:else if tipoConversion === ConvertionType.GIF || filetypeRecognized === ConvertionType.GIF}{:else if tipoConversion === ConvertionType.ZIP || filetypeRecognized === ConvertionType.ZIP}{/if}
 					</div>
-				{:else if tipoConversion === ConvertionType.PDF || filetypeRecognized === ConvertionType.PDF}
-					<embed
-						src={`data:application/pdf;base64,${debouncedValue}`}
-						type="application/pdf"
-						class="h-full w-full flex-1"
-					/>
-				{:else if tipoConversion === ConvertionType.JPG || filetypeRecognized === ConvertionType.JPG}
-					<img src={`data:image/jpeg;base64,${debouncedValue}`} alt="Base64_Image" />
-				{:else if tipoConversion === ConvertionType.PNG || filetypeRecognized === ConvertionType.PNG}
-					<img src={`data:image/png;base64,${debouncedValue}`} alt="Base64_Image" />
-				{:else if tipoConversion === ConvertionType.GIF || filetypeRecognized === ConvertionType.GIF}{:else if tipoConversion === ConvertionType.ZIP || filetypeRecognized === ConvertionType.ZIP}{/if}
+				{/if}
 			</div>
-		{/if}
+		</div>
 	</div>
 </div>
