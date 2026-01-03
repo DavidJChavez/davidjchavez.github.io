@@ -72,15 +72,15 @@
 	});
 </script>
 
-<div class="mb-4 border-b border-b-gray-400 text-4xl italic">Base64 encoder/decoder</div>
+<div class="mb-4 text-4xl italic">Base64 encoder/decoder</div>
 
 <div class="mb-2 text-3xl">Decoder</div>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 mb-4">
 	<div class="flex w-sm flex-col gap-0.5">
 		<label for="filetype"> File type </label>
 		<select id="filetype" bind:value={tipoConversion} class="border">
-			<option value={null} disabled hidden selected>Please select...</option>
+			<option value={null} disabled selected>Please select...</option>
 			{#each catConvertionTypes as option}
 				<option value={option.value}>{option.name}</option>
 			{/each}
@@ -104,9 +104,9 @@
 			</div>
 			<div class="flex flex-1 border border-gray-200">
 				{#if tipoConversion === null}
-					<div>Selecciona el tipo de conversión</div>
+					<div class="p-2">Selecciona el tipo de conversión</div>
 				{:else if !debouncedValue}
-					<div>Aquí verás el resultado</div>
+					<div class="p-2">Aquí verás el resultado</div>
 				{:else}
 					<div class="flex w-full flex-1 items-center justify-center">
 						{#if tipoConversion === ConvertionType.PLAIN_TEXT || filetypeRecognized === ConvertionType.PLAIN_TEXT}
@@ -130,3 +130,7 @@
 		</div>
 	</div>
 </div>
+
+<div class="mb-2 text-3xl">Encoder</div>
+
+// TODO: Con calmita xd
